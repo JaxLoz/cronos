@@ -9,21 +9,33 @@ package com.mycompany.cronometro;
 import com.mycompany.cronometro.Logica;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.geom.RoundRectangle2D;
 import javax.swing.Timer;
+
+
+
 public class Vista extends javax.swing.JFrame {
 
     Logica crono;
     Timer time;
     
+    
     public Vista() {
         
         initComponents();
+        
         this.setLocationRelativeTo(null);
         this.setTitle("Cronometro");
+        
+       
+        
+        this.setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 20, 20));
+        //this.setOpacity(0);
         crono = new Logica();
         time = new Timer(10, run);
         btnStop.setEnabled(false);
         btnRestart.setEnabled(false);
+        
         
         
     }
@@ -103,80 +115,86 @@ public class Vista extends javax.swing.JFrame {
         lblMinutes = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         lblMsec = new javax.swing.JLabel();
-        btnStart = new javax.swing.JButton();
-        btnStop = new javax.swing.JButton();
-        btnRestart = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        btnCloset = new com.mycompany.cronometro.CunstomButton();
+        btnRestart = new com.mycompany.cronometro.CunstomButton();
+        btnStart = new com.mycompany.cronometro.CunstomButton();
+        btnStop = new com.mycompany.cronometro.CunstomButton();
 
         jToggleButton1.setText("jToggleButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         lblSeconds.setBackground(new java.awt.Color(0, 102, 255));
-        lblSeconds.setFont(new java.awt.Font("SansSerif", 0, 36)); // NOI18N
+        lblSeconds.setFont(new java.awt.Font("SansSerif", 1, 60)); // NOI18N
         lblSeconds.setForeground(new java.awt.Color(0, 102, 255));
         lblSeconds.setText("00");
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 60)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 102, 255));
         jLabel1.setText(":");
 
         lblHours.setBackground(new java.awt.Color(0, 102, 255));
-        lblHours.setFont(new java.awt.Font("SansSerif", 0, 36)); // NOI18N
+        lblHours.setFont(new java.awt.Font("SansSerif", 1, 60)); // NOI18N
         lblHours.setForeground(new java.awt.Color(0, 102, 255));
         lblHours.setText("00");
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 60)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 102, 255));
         jLabel2.setText(":");
 
         lblMinutes.setBackground(new java.awt.Color(0, 102, 255));
-        lblMinutes.setFont(new java.awt.Font("SansSerif", 0, 36)); // NOI18N
+        lblMinutes.setFont(new java.awt.Font("SansSerif", 1, 60)); // NOI18N
         lblMinutes.setForeground(new java.awt.Color(0, 102, 255));
         lblMinutes.setText("00");
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 60)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 102, 255));
         jLabel3.setText(":");
 
         lblMsec.setBackground(new java.awt.Color(0, 102, 255));
-        lblMsec.setFont(new java.awt.Font("SansSerif", 0, 36)); // NOI18N
+        lblMsec.setFont(new java.awt.Font("SansSerif", 1, 60)); // NOI18N
         lblMsec.setForeground(new java.awt.Color(0, 102, 255));
         lblMsec.setText("00");
 
-        btnStart.setBackground(new java.awt.Color(102, 102, 102));
-        btnStart.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        btnStart.setText("Start");
-        btnStart.addActionListener(new java.awt.event.ActionListener() {
+        btnCloset.setBackground(new java.awt.Color(153, 0, 0));
+        btnCloset.setForeground(new java.awt.Color(204, 0, 0));
+        btnCloset.setOpaque(false);
+        btnCloset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnStartActionPerformed(evt);
+                btnClosetActionPerformed(evt);
             }
         });
 
-        btnStop.setBackground(new java.awt.Color(102, 102, 102));
-        btnStop.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        btnStop.setText("Stop");
-        btnStop.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnStopActionPerformed(evt);
-            }
-        });
-
-        btnRestart.setBackground(new java.awt.Color(102, 102, 102));
-        btnRestart.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        btnRestart.setBackground(new java.awt.Color(255, 255, 255));
+        btnRestart.setForeground(new java.awt.Color(102, 102, 102));
         btnRestart.setText("Restart");
+        btnRestart.setOpaque(false);
         btnRestart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRestartActionPerformed(evt);
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel4.setText("X");
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel4MouseClicked(evt);
+        btnStart.setBackground(new java.awt.Color(255, 255, 255));
+        btnStart.setForeground(new java.awt.Color(102, 102, 102));
+        btnStart.setText("Start");
+        btnStart.setOpaque(false);
+        btnStart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStartActionPerformed(evt);
+            }
+        });
+
+        btnStop.setBackground(new java.awt.Color(255, 255, 255));
+        btnStop.setForeground(new java.awt.Color(102, 102, 102));
+        btnStop.setText("Stop");
+        btnStop.setOpaque(false);
+        btnStop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStopActionPerformed(evt);
             }
         });
 
@@ -185,55 +203,64 @@ public class Vista extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(213, 213, 213)
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnStart)
-                        .addGap(44, 44, 44)
-                        .addComponent(btnStop)
-                        .addGap(38, 38, 38)
-                        .addComponent(btnRestart))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(lblHours)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblMinutes)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblSeconds)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblMsec)))
-                .addContainerGap(217, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addGap(14, 14, 14))
+                        .addComponent(btnCloset, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 108, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnStop, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(32, 32, 32)
+                                .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblHours)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblMinutes)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel2)))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblSeconds)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblMsec))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(btnRestart, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(138, 138, 138))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(lblHours)
-                    .addComponent(lblSeconds)
-                    .addComponent(jLabel2)
-                    .addComponent(lblMinutes)
-                    .addComponent(jLabel3)
-                    .addComponent(lblMsec))
-                .addGap(60, 60, 60)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnStart)
-                    .addComponent(btnStop)
-                    .addComponent(btnRestart))
-                .addGap(127, 127, 127))
+                .addComponent(btnCloset, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(lblHours)
+                            .addComponent(lblSeconds)
+                            .addComponent(jLabel2)
+                            .addComponent(lblMinutes)
+                            .addComponent(jLabel3)
+                            .addComponent(lblMsec))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(35, 35, 35)
+                                .addComponent(btnRestart, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(btnStop, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(77, 77, 77))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -250,9 +277,27 @@ public class Vista extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnClosetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClosetActionPerformed
+        // TODO add your handling code here:
+        
+        System.exit(0);
+        
+    }//GEN-LAST:event_btnClosetActionPerformed
+
+    private void btnRestartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRestartActionPerformed
+        // TODO add your handling code here:
+
+        crono.RestartTimer();
+        restartLabel();
+        btnStop.setEnabled(false);
+        
+
+    }//GEN-LAST:event_btnRestartActionPerformed
+
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
         // TODO add your handling code here:
         time.start();
+        UpdateTimer();
         btnStop.setEnabled(true);
         btnRestart.setEnabled(true);
     }//GEN-LAST:event_btnStartActionPerformed
@@ -261,25 +306,6 @@ public class Vista extends javax.swing.JFrame {
         // TODO add your handling code here:
         time.stop();
     }//GEN-LAST:event_btnStopActionPerformed
-
-    private void btnRestartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRestartActionPerformed
-        // TODO add your handling code here:
-        
-        crono.RestartTimer();
-        restartLabel();
-        btnStop.setEnabled(false);
-        btnRestart.setEnabled(false);
-        
-        
-        
-    }//GEN-LAST:event_btnRestartActionPerformed
-
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-        // TODO add your handling code here:
-        
-        System.exit(0);
-        //this.dispose();
-    }//GEN-LAST:event_jLabel4MouseClicked
 
     /**
      * @param args the command line arguments
@@ -317,13 +343,13 @@ public class Vista extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnRestart;
-    private javax.swing.JButton btnStart;
-    private javax.swing.JButton btnStop;
+    private com.mycompany.cronometro.CunstomButton btnCloset;
+    private com.mycompany.cronometro.CunstomButton btnRestart;
+    private com.mycompany.cronometro.CunstomButton btnStart;
+    private com.mycompany.cronometro.CunstomButton btnStop;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JLabel lblHours;
